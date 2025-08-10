@@ -1,0 +1,30 @@
+{
+  "_alpine-DJjOBum0.js": {
+    "file": "assets/alpine-DJjOBum0.js",
+    "name": "alpine"
+  },
+  "_flowbite-CSsL-3HP.js": {
+    "file": "assets/flowbite-CSsL-3HP.js",
+    "name": "flowbite"
+  },
+  "_sweetalert-CSaEdlWy.js": {
+    "file": "assets/sweetalert-CSaEdlWy.js",
+    "name": "sweetalert"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-fxacCLXp.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BDJvGExC.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_flowbite-CSsL-3HP.js",
+      "_alpine-DJjOBum0.js",
+      "_sweetalert-CSaEdlWy.js"
+    ]
+  }
+}
