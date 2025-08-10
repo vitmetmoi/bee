@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-50">
         <!-- Profile Info Section -->
         <div class="relative px-4 sm:px-6 lg:px-8 pt-8">
-            <div class="max-w-7xl mx-auto">
+            <div class="max-w-10xl mx-auto">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <!-- Header Component -->
                     <x-profile.header 

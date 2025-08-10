@@ -81,7 +81,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Header Layout -->
 <header class="bg-white shadow-sm border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
             <div class="flex-shrink-0">
@@ -145,7 +145,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Navigation -->
 <nav class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex space-x-8">
             <a
                 href="/"
@@ -189,7 +189,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-primary to-primary-dark text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="text-center">
             <h1 class="text-4xl font-bold mb-4">Khám phá thế giới ẩm thực</h1>
             <p class="text-xl mb-8 opacity-90">
@@ -232,7 +232,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Featured Categories -->
 <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">Danh mục nổi bật</h2>
 
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -259,7 +259,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Recipe Grid -->
 <section class="py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-bold text-gray-900">Công thức mới nhất</h2>
 
@@ -501,7 +501,7 @@ Dựa trên [Cookpad Việt Nam](https://cookpad.com/vn), tôi đã phân tích 
 ```html
 <!-- Manager Dashboard -->
 <div class="min-h-screen bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow-sm p-6">

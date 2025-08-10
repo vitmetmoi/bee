@@ -74,4 +74,28 @@ class Category extends Model
     {
         return $query->whereNull('parent_id');
     }
+
+    /**
+     * Get the image URL attribute.
+     */
+    public function getImageUrlAttribute()
+    {
+        if (!$this->image) {
+            return null;
+        }
+        
+        return asset('storage/' . $this->image);
+    }
+
+    /**
+     * Get the image for Filament forms.
+     */
+    public function getImageAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        
+        return $value;
+    }
 }

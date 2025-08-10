@@ -1,5 +1,8 @@
-<div class="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" x-data="weatherSlideshow()">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" 
+     x-data="weatherSlideshow()" 
+     @keydown.window="handleKeyboard($event)" 
+     tabindex="0">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Main Container with White Background -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
             <!-- Header Section -->
@@ -138,10 +141,10 @@
                     <!-- Slideshow Container -->
                     <div class="relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
                         <!-- Slides -->
-                        <div class="relative h-96">
+                        <div class="relative h-96" wire:key="slideshow-container">
                             @foreach($suggestions as $index => $recipe)
-                                <div class="absolute inset-0 transition-opacity duration-500 ease-in-out {{ $index === $currentSlide ? 'opacity-100' : 'opacity-0' }}"
-                                     id="slide-{{ $index }}">
+                                <div class="absolute inset-0 transition-all duration-500 ease-in-out {{ $index === $currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0' }}"
+                                     wire:key="slide-{{ $index }}">
                                     <div class="flex h-full">
                                         <!-- Recipe Image -->
                                         <div class="w-1/2 relative">
@@ -211,42 +214,55 @@
                         </div>
 
                         <!-- Navigation Arrows -->
-                        <button wire:click="previousSlide" 
-                                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
+                        @if($suggestions->count() > 1)
+                            <button wire:click="previousSlide" 
+                                    wire:loading.attr="disabled"
+                                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed z-20">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
 
-                        <button wire:click="nextSlide" 
-                                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
+                            <button wire:click="nextSlide" 
+                                    wire:loading.attr="disabled"
+                                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed z-20">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                        @endif
 
                         <!-- Dots Indicator -->
-                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                            @foreach($suggestions as $index => $recipe)
-                                <button wire:click="goToSlide({{ $index }})" 
-                                        class="w-3 h-3 rounded-full transition-all duration-200 {{ $index === $currentSlide ? 'bg-orange-500' : 'bg-gray-300 hover:bg-gray-400' }}">
-                                </button>
-                            @endforeach
-                        </div>
+                        @if($suggestions->count() > 1)
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                                @foreach($suggestions as $index => $recipe)
+                                    <button wire:click="goToSlide({{ $index }})" 
+                                            wire:loading.attr="disabled"
+                                            wire:key="dot-{{ $index }}"
+                                            class="w-3 h-3 rounded-full transition-all duration-200 disabled:cursor-not-allowed {{ $index === $currentSlide ? 'bg-orange-500' : 'bg-gray-300 hover:bg-gray-400' }}"
+                                            aria-label="Chuyển đến slide {{ $index + 1 }}">
+                                    </button>
+                                @endforeach
+                            </div>
+                        @endif
 
                         <!-- Auto-play Toggle -->
-                        <button wire:click="toggleAutoPlay" 
-                                class="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200">
-                            @if($autoPlay)
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            @else
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            @endif
-                        </button>
+                        @if($suggestions->count() > 1)
+                            <button wire:click="toggleAutoPlay" 
+                                    wire:loading.attr="disabled"
+                                    class="absolute top-4 right-4 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed z-20"
+                                    title="{{ $autoPlay ? 'Tạm dừng tự động chuyển slide' : 'Bật tự động chuyển slide' }}">
+                                @if($autoPlay)
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                @else
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                @endif
+                            </button>
+                        @endif
                     </div>
 
                     <!-- View All Button -->
@@ -315,9 +331,42 @@
     <script>
     function weatherSlideshow() {
         return {
+            autoPlayInterval: null,
+            
             init() {
                 // Không tự động lấy vị trí khi khởi tạo
                 console.log('WeatherSlideshow initialized');
+                this.startAutoPlay();
+            },
+
+            startAutoPlay() {
+                // Clear any existing interval
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                }
+                
+                // Start auto-advance if enabled and there are multiple slides
+                this.autoPlayInterval = setInterval(() => {
+                    @this.autoAdvanceSlide();
+                }, 5000); // 5 seconds
+            },
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            },
+
+            handleKeyboard(event) {
+                if (event.key === 'ArrowLeft') {
+                    @this.previousSlide();
+                } else if (event.key === 'ArrowRight') {
+                    @this.nextSlide();
+                } else if (event.key === ' ') {
+                    event.preventDefault();
+                    @this.toggleAutoPlay();
+                }
             },
             
             getUserLocation() {
@@ -406,12 +455,11 @@
             @this.randomCity();
         });
 
-        // Tự động lấy vị trí khi component được load
+       
         Livewire.on('auto-get-location', () => {
             showLocationModal();
         });
 
-        // Xử lý khi người dùng click nút lấy vị trí thủ công
         Livewire.on('get-user-location', () => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -421,13 +469,12 @@
                         
                         console.log('Đã lấy được vị trí:', latitude, longitude);
                         
-                        // Gửi tọa độ về Livewire
+                      
                         @this.setUserLocation(latitude, longitude);
                     },
                     (error) => {
                         console.log('Lỗi lấy vị trí:', error.message);
-                        
-                        // Khi người dùng từ chối vị trí, tự động chọn ngẫu nhiên
+                       
                         if (error.code === 1) { // PERMISSION_DENIED
                             console.log('Người dùng từ chối vị trí, chọn ngẫu nhiên...');
                             @this.randomCity();
@@ -446,24 +493,15 @@
             }
         });
 
-        Livewire.on('slide-changed', (event) => {
-            const currentSlide = event.currentSlide;
-            const totalSlides = event.totalSlides;
-            
-            // Hide all slides
-            for (let i = 0; i < totalSlides; i++) {
-                const slide = document.getElementById(`slide-${i}`);
-                if (slide) {
-                    slide.classList.remove('opacity-100');
-                    slide.classList.add('opacity-0');
+       
+        Livewire.on('autoplay-changed', (event) => {
+            const slideshowComponent = document.querySelector('[x-data*="weatherSlideshow"]').__x?.$data;
+            if (slideshowComponent) {
+                if (event.autoPlay) {
+                    slideshowComponent.startAutoPlay();
+                } else {
+                    slideshowComponent.stopAutoPlay();
                 }
-            }
-            
-            // Show current slide
-            const currentSlideElement = document.getElementById(`slide-${currentSlide}`);
-            if (currentSlideElement) {
-                currentSlideElement.classList.remove('opacity-0');
-                currentSlideElement.classList.add('opacity-100');
             }
         });
 

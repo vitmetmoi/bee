@@ -12,7 +12,7 @@
 <div class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <div class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-center">
                 <div class="flex items-center justify-center mb-4">
                     <h1 class="text-4xl font-bold text-gray-900">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         @if($posts->count() > 0)
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($posts as $post)

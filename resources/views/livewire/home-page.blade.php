@@ -24,7 +24,7 @@
 
     <!-- Call to Action Section -->
     <section class="py-16 bg-orange-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Chia sẻ công thức của bạn</h2>
             <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                 Bạn có công thức nấu ăn ngon? Hãy chia sẻ với cộng đồng BeeFood và nhận được phản hồi từ những người yêu ẩm thực khác.
@@ -60,7 +60,7 @@
 
     <!-- Features Section -->
     <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Tại sao chọn BeeFood?</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">

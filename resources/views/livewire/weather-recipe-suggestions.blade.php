@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
         <div class="text-center mb-8">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">

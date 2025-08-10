@@ -1,11 +1,11 @@
-<div class="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-12 mt-[5%] bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Main Container with White Background -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
             <!-- Header Section -->
-            <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-6">
+            <div class="bg-gradient-to-br from-orange-100 to-red-100 text-black px-8 py-6">
                 <div class="text-center">
-                    <h2 class="text-3xl font-bold mb-2">
+                    <h2 class="text-3xl text-black font-bold mb-2">
                         🌤️ Món Ăn Phù Hợp Với Thời Tiết
                     </h2>
                     <p class="text-lg opacity-90 max-w-2xl mx-auto">

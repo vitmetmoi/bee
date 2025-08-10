@@ -168,6 +168,11 @@ class RecipeResource extends Resource
                             ->image()
                             ->imageEditor()
                             ->directory('recipes')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->preserveFilenames()
+                            ->maxSize(10240)
+                            ->getUploadedFileUrlUsing(fn ($record) => $record?->featured_image ? asset('storage/' . $record->featured_image) : null)
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('video_url')
                             ->label('URL Video')
@@ -269,6 +274,7 @@ class RecipeResource extends Resource
                     ->label('Ảnh')
                     ->circular()
                     ->size(50)
+                    ->getStateUsing(fn($record) => $record?->featured_image ? asset('storage/' . $record->featured_image) : null)
                     ->disk('public')
                     ->visibility('public'),
                 Tables\Columns\TextColumn::make('title')

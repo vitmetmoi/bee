@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-gray-50">
     <!-- Header Section -->
     <div class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-900">Công Thức Nấu Ăn</h1>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex gap-6">
             <!-- Sidebar Filters -->
             <div class="w-80 flex-shrink-0">

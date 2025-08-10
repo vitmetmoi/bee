@@ -4,7 +4,7 @@
 <div class="min-h-screen bg-gray-50">
     <!-- Header Section -->
     <div class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-900">Công thức của tôi</h1>
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Content Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Tabs -->
         <div class="border-b border-gray-200 mb-8">
             <nav class="-mb-px flex space-x-8">

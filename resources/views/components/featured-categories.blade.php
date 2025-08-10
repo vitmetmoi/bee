@@ -1,5 +1,5 @@
 <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Danh mục nổi bật</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">Khám phá các danh mục món ăn phổ biến và đa dạng</p>

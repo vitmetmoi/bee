@@ -42,7 +42,13 @@ class WeatherSlideshowSimple extends Component
     public function loadData()
     {
         Log::info('loadData called for city: ' . $this->selectedCity);
-        $this->recipes = Recipe::take(3)->get();
+        
+        // Memory optimization: Load only essential columns
+        $this->recipes = Recipe::select('id', 'title', 'slug', 'description', 'summary', 'user_id', 'cooking_time', 'servings', 'difficulty')
+            ->with(['user:id,name'])
+            ->take(3)
+            ->get();
+            
         $this->weatherData = WeatherData::where('city_code', $this->selectedCity)->first();
 
         if (!$this->weatherData) {

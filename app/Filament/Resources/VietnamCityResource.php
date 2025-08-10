@@ -97,14 +97,7 @@ class VietnamCityResource extends Resource
                         default => 'gray',
                     })
                     ->sortable(),
-                Tables\Columns\TextColumn::make('latitude')
-                    ->label('Vĩ độ')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('longitude')
-                    ->label('Kinh độ')
-                    ->numeric()
-                    ->sortable(),
+               
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Trạng thái')
                     ->boolean()

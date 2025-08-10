@@ -201,8 +201,8 @@ class RecipeService
     public function getFilteredRecipes(array $filters = [], int $perPage = 12)
     {
         $query = Recipe::with(['user', 'categories', 'tags', 'images', 'favorites'])
-            ->where('status', 'approved')
-            ->whereNotNull('published_at');
+            ->where('status', 'approved');
+           
 
         // Apply filters
         $this->applyFilters($query, $filters);

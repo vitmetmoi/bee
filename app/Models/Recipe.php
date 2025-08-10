@@ -315,6 +315,30 @@ class Recipe extends Model
     }
 
     /**
+     * Get the featured image URL for Filament forms.
+     */
+    public function getFeaturedImageAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        
+        return $value;
+    }
+
+    /**
+     * Get the featured image for Filament forms.
+     */
+    public function getFeaturedImageForFormsAttribute()
+    {
+        if (!$this->featured_image) {
+            return null;
+        }
+        
+        return $this->featured_image;
+    }
+
+    /**
      * Increment view count.
      */
     public function incrementViewCount()

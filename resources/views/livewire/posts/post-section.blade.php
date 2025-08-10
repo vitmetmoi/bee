@@ -1,6 +1,6 @@
 <div>
     <div class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Tiêu đề section -->
             <div class="text-center mb-12">
                 <div class="flex items-center justify-center mb-4">

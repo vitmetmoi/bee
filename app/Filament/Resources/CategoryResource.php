@@ -51,10 +51,15 @@ class CategoryResource extends Resource
                             ->label('Mô tả')
                             ->maxLength(500)
                             ->columnSpanFull(),
-                        Forms\Components\FileUpload::make('image')
+                            Forms\Components\FileUpload::make('image')
                             ->label('Ảnh danh mục')
                             ->image()
                             ->imageEditor()
+                            ->disk('public')
+                            ->visibility('public')
+                            ->preserveFilenames()
+                            ->maxSize(5120)
+                            ->previewable(false) // Try this first
                             ->columnSpanFull(),
                         Forms\Components\Select::make('parent_id')
                             ->label('Danh mục cha')
@@ -81,6 +86,7 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Ảnh')
+                    ->getStateUsing(fn($record) => $record?->image ? asset('storage/' . $record->image) : null)
                     ->circular()
                     ->size(50),
                 Tables\Columns\TextColumn::make('name')

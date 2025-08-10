@@ -28,7 +28,6 @@ class WeatherRecipeSlideshow extends Component
 
     public function mount()
     {
-
         // Kiểm tra xem có thông tin vị trí từ session không
         if (session('user_location')) {
             $userLocation = session('user_location');
@@ -44,6 +43,13 @@ class WeatherRecipeSlideshow extends Component
         }
 
         $this->loadWeatherAndSuggestions();
+    }
+
+    public function autoAdvanceSlide()
+    {
+        if ($this->autoPlay && $this->suggestions->count() > 1) {
+            $this->nextSlide();
+        }
     }
 
     /**
@@ -260,7 +266,6 @@ class WeatherRecipeSlideshow extends Component
     {
         if ($this->suggestions->count() > 0) {
             $this->currentSlide = ($this->currentSlide + 1) % $this->suggestions->count();
-            $this->dispatch('slide-changed', currentSlide: $this->currentSlide, totalSlides: $this->suggestions->count());
         }
     }
 
@@ -270,7 +275,6 @@ class WeatherRecipeSlideshow extends Component
             $this->currentSlide = $this->currentSlide === 0
                 ? $this->suggestions->count() - 1
                 : $this->currentSlide - 1;
-            $this->dispatch('slide-changed', currentSlide: $this->currentSlide, totalSlides: $this->suggestions->count());
         }
     }
 
@@ -278,13 +282,13 @@ class WeatherRecipeSlideshow extends Component
     {
         if ($index >= 0 && $index < $this->suggestions->count()) {
             $this->currentSlide = $index;
-            $this->dispatch('slide-changed', currentSlide: $this->currentSlide, totalSlides: $this->suggestions->count());
         }
     }
 
     public function toggleAutoPlay()
     {
         $this->autoPlay = !$this->autoPlay;
+        $this->dispatch('autoplay-changed', autoPlay: $this->autoPlay);
     }
 
     public function updatedSelectedCity()

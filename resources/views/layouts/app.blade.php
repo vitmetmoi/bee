@@ -40,7 +40,7 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-10xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
@@ -55,6 +55,11 @@
                 @endif
             </main>
             <x-footer />
+            
+            <!-- OpenAI Quick Chat Button (show on all pages except AI chat) -->
+            @unless(request()->routeIs('openai.*'))
+                <x-openai-quick-chat />
+            @endunless
         </div>
 
         <script>
